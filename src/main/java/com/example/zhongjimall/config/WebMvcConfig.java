@@ -1,15 +1,9 @@
 package com.example.zhongjimall.config;
-
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
-
-/**
- * @author longzhonghua
- * @data 2018/11/04 22:30
- */
 
 @Configuration
 //过时可以用WebMvcConfigurer

@@ -25,6 +25,12 @@ public class RbacServiceImpl implements RbacService {
     @Autowired
     private SysUserRepository sysUserRepository;
 
+    /**
+     * 根据用户的权限url，以返回权限状态
+     * @param request
+     * @param authentication
+     * @return
+     */
     @Override
     public boolean hasPermission(HttpServletRequest request, Authentication authentication) {
         Object principal = authentication.getPrincipal();

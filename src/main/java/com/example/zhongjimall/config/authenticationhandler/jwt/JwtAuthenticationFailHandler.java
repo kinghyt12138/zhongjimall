@@ -18,6 +18,7 @@ import java.io.PrintWriter;
  * @author longzhonghua
  * @data 2/26/2019 6:53 PM
  */
+
 @Component("jwtAuthenticationFailHandler")
 public class JwtAuthenticationFailHandler extends SimpleUrlAuthenticationFailureHandler {
     @Autowired

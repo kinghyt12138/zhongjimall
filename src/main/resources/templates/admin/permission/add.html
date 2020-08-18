@@ -50,6 +50,7 @@
         <label class="col-sm-2 control-label">角色</label>
         <div class="col-sm-10">
             <select class="form-control" name="role">
+<!--                ${sysRole是根据控制器返回的参数}  th：each用于遍历数据 是thymeleaf的标签-->
                 <option th:each="sysRole : ${sysRole}" th:text="${sysRole.cnname}" th:value="${sysRole.role}"/>
                 </option>
 

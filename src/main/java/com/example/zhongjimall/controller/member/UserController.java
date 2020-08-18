@@ -14,6 +14,7 @@ import com.example.zhongjimall.util.result.Response;
 import org.springframework.amqp.core.AmqpTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -38,14 +39,17 @@ public class UserController extends BaseController {
 
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private SysUserRepository adminUserRepository;
     @Autowired
     private UserRoleRepository userRoleRepository;
 
+//    新加的一行 不晓得有用没得
+//    @Autowired
     @Resource
     private JavaMailSender mailSender;
+
+
     @Value("${spring.mail.username}")
     private String mailFrom;
     @Value("${mail.subject.forgotpassword}")

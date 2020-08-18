@@ -59,6 +59,7 @@ public class MultiHttpSecurityConfig {
 
             http.logout().logoutUrl("/admin/logout").permitAll();
             http.rememberMe().rememberMeParameter("rememberme");//记住我功能
+            //CSRF默认是开启的 如果要忽略或关闭 则进行"http.csrf()"配置
             http.csrf().ignoringAntMatchers("/admin/upload");
             http.headers().frameOptions().sameOrigin();//解决X-Frame-Options deny 造成的页面空白,不然后台不能用frame
         }

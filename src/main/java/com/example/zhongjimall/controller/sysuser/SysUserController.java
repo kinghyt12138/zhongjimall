@@ -1,13 +1,8 @@
 package com.example.zhongjimall.controller.sysuser;
-/**
- * @author longzhonghua
- * @data 2018/11/04 22:30
- */
-
-import com.example.demo.entity.sysuser.SysRole;
-import com.example.demo.entity.sysuser.SysUser;
-import com.example.demo.repository.SysUser.SysRoleRepository;
-import com.example.demo.repository.SysUser.SysUserRepository;
+import com.example.zhongjimall.entity.sysuser.SysRole;
+import com.example.zhongjimall.entity.sysuser.SysUser;
+import com.example.zhongjimall.repository.SysUser.SysRoleRepository;
+import com.example.zhongjimall.repository.SysUser.SysUserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,7 +34,7 @@ public class SysUserController {
     private SysRoleRepository sysRoleRepository;
 
 
-    // @PreAuthorize("hasRole('ROLE_admin')")
+    //添加用户操作
     @RequestMapping("/user/add")
     public String toAddUser(Model model) {
         List<SysRole> adminrole = sysRoleRepository.findAll();
@@ -47,7 +42,8 @@ public class SysUserController {
         return "admin/user/add";
     }
 
-    // @RequestMapping("/user/add")
+
+
     @PostMapping("/user")
     public String addUser(String name, String password, String role) {
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -85,6 +81,7 @@ public class SysUserController {
         return "redirect:";
     }
 
+    //编辑
     @RequestMapping("/user/edit")
     public ModelAndView useredit(long id) {
         SysUser model = adminUserRepository.findById(id);
@@ -94,7 +91,7 @@ public class SysUserController {
     }
 
     /**
-     * 编辑操作
+     * 更新操作
      *
      * @param model
      * @return
@@ -106,6 +103,7 @@ public class SysUserController {
         return "redirect:";
     }
 
+    //查找
     @RequestMapping("/user/{id}")
     public ModelAndView testPathVariable(@PathVariable("id") Integer id) {
         SysUser adminUser = adminUserRepository.findById(id);
@@ -123,13 +121,14 @@ public class SysUserController {
 
     }
 
+    //显示用户列表 分页
     @GetMapping("/user")
 
     public ModelAndView userlist(@RequestParam(value = "start", defaultValue = "0") Integer start,
                                  @RequestParam(value = "limit", defaultValue = "5") Integer limit) {
         start = start < 0 ? 0 : start;
-        Sort sort = new Sort(Sort.Direction.DESC, "id");
-        Pageable pageable = new PageRequest(start, limit, sort);
+        Sort sort = Sort.by(Sort.Direction.DESC, "id");
+        Pageable pageable = PageRequest.of(start, limit, sort);
 
         Page<SysUser> page = adminUserRepository.findAll(pageable);
 

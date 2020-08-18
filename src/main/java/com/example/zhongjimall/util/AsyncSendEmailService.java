@@ -4,6 +4,7 @@ package com.example.zhongjimall.util;
 import com.example.zhongjimall.repository.member.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.scheduling.annotation.Async;
@@ -15,10 +16,12 @@ import java.sql.Timestamp;
 import java.util.UUID;
 
 @Service
-
 public class AsyncSendEmailService {
     @Autowired
     private UserRepository userRepository;
+
+//    新加的一行 不晓得有用没得
+//    @Autowired
     @Resource
     private JavaMailSender mailSender;
     @Value("${spring.mail.username}")

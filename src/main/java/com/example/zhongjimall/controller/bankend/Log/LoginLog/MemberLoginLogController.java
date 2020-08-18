@@ -18,11 +18,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import static com.example.zhongjimall.module.Listener.SessionListener.onlineNum;
 
-/**
- * @author longzhonghua
- * @createdata 3/6/2019 8:56 PM
- * @description
- */
 @RequestMapping("admin")
 @Controller
 public class MemberLoginLogController {
